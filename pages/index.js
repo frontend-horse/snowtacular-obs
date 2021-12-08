@@ -1,14 +1,8 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
+import ProgressBar from "../components/ProgressBar";
 
 import styles from "../styles/Home.module.css";
-import {
-  useQuery,
-  useQueryClient,
-  useMutation,
-  QueryClient,
-  QueryClientProvider,
-} from "react-query";
 
 import { useTeamSeasDonations } from "../hooks/useTeamSeasDonations";
 
@@ -27,6 +21,15 @@ export default function Home() {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
+        <ProgressBar></ProgressBar>
+        {data &&
+          data.map((item, index) => (
+            <div key={index}>
+              <p>{item.display_name}</p>
+              <p>{item.message_public}</p>
+              <p>{item.donation}</p>
+            </div>
+          ))}
       </main>
     </div>
   );
