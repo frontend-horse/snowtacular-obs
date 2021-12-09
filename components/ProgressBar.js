@@ -45,7 +45,7 @@ export default function ProgressBar() {
 
   return (
     <div className={styles.container}>
-      Total donations: {progressBar.actualTotal} Goal: {progressBar.goal}
+      Total donations: {progressBar.matchedTotal} Goal: {progressBar.goal}
       <div className={styles.progressBar}>
         <span className={styles.progressBarInner}></span>
       </div>
