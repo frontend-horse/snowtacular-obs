@@ -41,8 +41,6 @@ export default function ProgressBar() {
     setWidth();
   }
 
-  console.log(progressBar);
-
   return (
     <div className={styles.container}>
       Total donations: {progressBar.matchedTotal} Goal: {progressBar.goal}
