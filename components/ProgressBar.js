@@ -1,4 +1,4 @@
-import React, { useMemo, useEffect, useRef } from 'react';
+import React, { useMemo } from 'react';
 import { useSupabaseDonations } from '../hooks/useSupabaseDonations';
 import styles from '../styles/ProgressBar.module.css';
 
