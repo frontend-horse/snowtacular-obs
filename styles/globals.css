@@ -1,3 +1,7 @@
+:root{
+  --bar-width: 0%;
+}
+
 html,
 body {
   padding: 0;

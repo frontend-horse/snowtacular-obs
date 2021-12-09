@@ -1,0 +1,18 @@
+.container{
+  width:100%;
+}
+
+.progressBar{
+  position:relative;
+  height:50px;
+  width:100%;
+  border:1px solid gray;
+}
+
+.progressBarInner{
+  position:absolute;
+  height:100%;
+  background:blue;
+  width:var(--bar-width);
+  max-width:100%;
+}
