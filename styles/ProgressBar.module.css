@@ -1,0 +1,55 @@
+.container{
+  width:100%;
+  margin: 1rem 0;
+}
+
+.progressBar{
+  position:relative;
+  height:170px;
+  width:100%;
+}
+
+.progressBar .oceanDirty{
+  position:absolute;
+  height:100%;
+  width:100%;
+  object-fit: cover;
+}
+
+.progressBarInner{
+  position:absolute;
+  height:100%;
+  width:var(--bar-width);
+  max-width:100%;
+}
+
+.progressBarInner .oceanClean{
+  height:100%;
+  width:100%;
+  object-fit: cover;
+}
+
+.donationStats{
+  display:flex;
+  gap:2rem;
+  padding:0;
+  margin:0;
+}
+.donationStats dt,
+.donationStats dd{
+  padding:0;
+  margin:0;
+}
+
+.donationStatsGroup{
+  display: flex;
+  flex-flow:column;
+}
+
+.donationStatsGroup dt{
+  font-weight:700;
+}
+
+.donationStatsGroup dd{
+  font-size:1.4rem;
+}
