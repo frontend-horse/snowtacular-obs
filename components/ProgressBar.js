@@ -1,51 +1,83 @@
-import React, { useMemo } from 'react';
-import { useSupabaseDonations } from '../hooks/useSupabaseDonations';
+import React, { useMemo, useState } from 'react';
+// import { useSupabaseDonations } from '../hooks/useSupabaseDonations';
+import { useTeamSeasDonations } from '../hooks/useTeamSeasDonations';
 import styles from '../styles/ProgressBar.module.css';
 
 export default function ProgressBar() {
-  const { status, data, error, isFetching } = useSupabaseDonations();
+  // const { status, data, error, isFetching } = useSupabaseDonations();
+  const { data } = useTeamSeasDonations();
 
-  // Set up progress bar object
-  const progressBar = {
+  // setup progressBar state
+  const [progressBar, setProgressBar] = useState({
     goal: 10000,
-    actualTotal: 0,
-    matchedTotal: 0,
-    percentFilled: 0
-  };
-
-  // function to calculate the sponsor matching
-  // ! I think this logic needs work...
-  const sponsorMatching = (actualTotal, goal) => {
-    if (actualTotal < goal) return actualTotal * 2;
-    return actualTotal;
-  };
+    numOfSponsors: 2,
+    maxSponsorMatch: 1000,
+    perSponsorMatch: 0,
+    donations: 0,
+    matching: 0,
+    total: 0,
+    percentFilled: '0%',
+  });
 
   // function to convert to percentage
   const percentage = (current, goal) => {
-    return ((current / goal) * 100) + '%';
+    if (current / goal > 1) return '100%';
+    return (current / goal) * 100 + '%';
   };
 
-  // function to set the CSS Custom Property for the bar width
+  // function to set the width of the inner progress bar
   const setWidth = () => document.documentElement.style.setProperty('--bar-width', progressBar.percentFilled);
 
   if (data) {
-    // reducer to find the actual total
-    progressBar.actualTotal = data.reduce((acc, next) => acc + next.donation, 0);
+    // find total amount of donations
+    progressBar.donations = data.reduce((acc, next) => acc + next.donation, 0);
 
-    // sets the matched total
-    progressBar.matchedTotal = sponsorMatching(progressBar.actualTotal, progressBar.goal);
+    // if the number of donations is less than the max amount that sponsors will be matching,
+    // set to the same amount as the donations.
+    // otherwise just set it to the maximum the sponsors will be matching
+    if (progressBar.donations < progressBar.numOfSponsors * progressBar.maxSponsorMatch) {
+      progressBar.matching = progressBar.donations;
+    } else {
+      progressBar.matching = progressBar.numOfSponsors * progressBar.maxSponsorMatch;
+    }
 
-    // find the percentage and set the progress bar width
-    progressBar.percentFilled = percentage(progressBar.matchedTotal, progressBar.goal);
-    console.log(progressBar.percentFilled);
+    // calculate the amount each sponsor will match
+    progressBar.perSponsorMatch = progressBar.matching / progressBar.numOfSponsors;
+    
+    // set the total to the sum of the donations and sponsor matching amounts
+    progressBar.total = progressBar.donations + progressBar.matching;
+    
+    // create the percentage string
+    progressBar.percentFilled = percentage(progressBar.total, progressBar.goal);
+    
+    // set the inner progress bar's width to the percent string
     setWidth();
+    
+    // output progressBar object
+    console.log({progressBar});
   }
 
   return (
     <div className={styles.container}>
-      Total donations: {progressBar.matchedTotal} Goal: {progressBar.goal}
+      <dl className={styles.donationStats}>
+        <div className={styles.donationStatsGroup}>
+          <dt>Donations:</dt>
+          <dd>${progressBar.total.toFixed(2)}</dd>
+        </div>
+        <div className={styles.donationStatsGroup}>
+          <dt>Goal:</dt>
+          <dd>${progressBar.goal}</dd>
+        </div>
+      </dl>
       <div className={styles.progressBar}>
-        <span className={styles.progressBarInner}></span>
+        <video id="oceanDirty" className={styles.oceanDirty} autoPlay muted loop>
+          <source src="progress-bar/ocean_dirty.mp4" type="video/mp4" />
+        </video>
+        <span className={styles.progressBarInner}>
+          <video id="oceanClean" className={styles.oceanClean} autoPlay muted loop>
+            <source src="progress-bar/ocean.mp4" type="video/mp4" />
+          </video>
+        </span>
       </div>
     </div>
   );
