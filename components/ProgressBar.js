@@ -32,6 +32,8 @@ export default function ProgressBar() {
     // find total amount of donations
     progressBar.donations = data.reduce((acc, next) => acc + next.donation, 0);
 
+    progressBar.donations = 2500
+
     // if the number of donations is less than the max amount that sponsors will be matching,
     // set to the same amount as the donations.
     // otherwise just set it to the maximum the sponsors will be matching
