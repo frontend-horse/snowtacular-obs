@@ -1,6 +1,5 @@
-import { useQuery } from "react-query";
-
 import axios from "axios";
+import { useQuery } from "react-query";
 
 export const fetchSupabaseDonations = async () => {
   const apiUrl = "/api/supabase-donations";

@@ -1,0 +1,46 @@
+.container{
+  width:100%;
+  margin: 1rem 0;
+  font-family: "Poppins", sans-serif;
+}
+
+.progressBar{
+  position:relative;
+  aspect-ratio: 7.11 / 1;
+  border-radius:0.5rem;
+  overflow:hidden;
+}
+
+.progressBar .oceanDirty{
+  position:absolute;
+  height:100%;
+  width:100%;
+  object-position: center;
+}
+
+.progressBarInner{
+  position:absolute;
+  height:100%;
+  width:var(--bar-width);
+  max-width:100%;
+}
+
+.progressBarInner .oceanClean{
+  height:100%;
+  width:100%;
+  object-fit: cover;
+  object-position: left center;
+}
+
+.donationStats{
+  height:100%;
+  position:absolute;
+  right:1rem;
+  display:flex;
+  align-items:center;
+  justify-content: center;
+  line-height:1;
+  color:#FFF;
+  font-weight: bold;
+  font-size: 1.2rem;
+}

@@ -4,10 +4,10 @@ import ProgressBar from "../components/ProgressBar";
 
 import styles from "../styles/Home.module.css";
 
-import { useTeamSeasDonations } from "../hooks/useTeamSeasDonations";
+import { useSupabaseDonations } from "../hooks/useSupabaseDonations";
 
 export default function Home() {
-  const { status, data, error, isFetching } = useTeamSeasDonations();
+  const { status, data, error, isFetching } = useSupabaseDonations();
 
   return (
     <div className={styles.container}>
@@ -18,9 +18,6 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
         <ProgressBar></ProgressBar>
         {data &&
           data.map((item, index) => (
