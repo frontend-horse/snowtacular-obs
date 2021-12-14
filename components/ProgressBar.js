@@ -10,7 +10,7 @@ export default function ProgressBar() {
   // setup progressBar state
   const [progressBar, setProgressBar] = useState({
     goal: 10000,
-    numOfSponsors: 2,
+    numOfSponsors: 3,
     maxSponsorMatch: 1000,
     perSponsorMatch: 0,
     donations: 0,
@@ -32,6 +32,8 @@ export default function ProgressBar() {
     // find total amount of donations
     progressBar.donations = data.reduce((acc, next) => acc + next.donation, 0);
 
+    progressBar.donations = 2500
+
     // if the number of donations is less than the max amount that sponsors will be matching,
     // set to the same amount as the donations.
     // otherwise just set it to the maximum the sponsors will be matching
@@ -43,41 +45,41 @@ export default function ProgressBar() {
 
     // calculate the amount each sponsor will match
     progressBar.perSponsorMatch = progressBar.matching / progressBar.numOfSponsors;
-    
+
     // set the total to the sum of the donations and sponsor matching amounts
     progressBar.total = progressBar.donations + progressBar.matching;
-    
+
     // create the percentage string
     progressBar.percentFilled = percentage(progressBar.total, progressBar.goal);
-    
+
     // set the inner progress bar's width to the percent string
     setWidth();
-    
-    // output progressBar object
-    console.log({progressBar});
   }
 
   return (
     <div className={styles.container}>
-      <dl className={styles.donationStats}>
-        <div className={styles.donationStatsGroup}>
-          <dt>Donations:</dt>
-          <dd>${progressBar.total.toFixed(2)}</dd>
-        </div>
-        <div className={styles.donationStatsGroup}>
-          <dt>Goal:</dt>
-          <dd>${progressBar.goal}</dd>
-        </div>
-      </dl>
+      <div className={styles.progressBarLabel}>
+        <p>Amount donated so far:</p>
+      </div>
       <div className={styles.progressBar}>
         <video id="oceanDirty" className={styles.oceanDirty} autoPlay muted loop>
           <source src="progress-bar/ocean_dirty.mp4" type="video/mp4" />
         </video>
         <span className={styles.progressBarInner}>
           <video id="oceanClean" className={styles.oceanClean} autoPlay muted loop>
-            <source src="progress-bar/ocean.mp4" type="video/mp4" />
+            <source src="progress-bar/ocean_clean.mp4" type="video/mp4" />
           </video>
         </span>
+        <div className={styles.donationStats}>
+          <p>
+            ${parseFloat(progressBar.total.toFixed(0)).toLocaleString('en-US')} / ${progressBar.goal.toLocaleString('en-US')}
+          </p>
+        </div>
+      </div>
+      <div className={styles.progressBarMessage}>
+        <p>
+          Donate on teamseas.org with team name <strong>&ldquo;Frontend Horse&rdquo;</strong>
+        </p>
       </div>
     </div>
   );
