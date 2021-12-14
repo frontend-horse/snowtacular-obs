@@ -11,15 +11,9 @@ function MyApp({ Component, pageProps }) {
       <Hydrate state={pageProps.dehydratedState}>
         <Component {...pageProps} />
       </Hydrate>
-      <ReactQueryDevtools />
+      <ReactQueryDevtools initialIsOpen={false} />
     </QueryClientProvider>
   );
 }
-
-// Every 10 seconds
-// Fetch TeamSeas data
-// Fetch Supabase data
-// If any donation is not in SupaBase
-// Create new supabase file
 
 export default MyApp;

@@ -1,16 +1,20 @@
 import { supabaseClient } from "../../lib/supabaseClient";
 
 export default async function handler(req, res) {
-  console.log(
-    "🚀 ~ file: supabase-donations.js ~ line 4 ~ handler ~ req",
-    req.method
-  );
-  console.log("YE");
   if (req.method === "POST") {
-    // Process a POST request
     // Write to Supabase
-    res.status(200).json({ result: "Yeah" });
-  } else {
+    const { data, error } = await supabaseClient
+      .from("team_seas")
+      .upsert(req.body);
+
+    if (error) {
+      console.log("Error", error);
+      res.status(500).json({ error });
+    } else {
+      console.log("Data", data);
+      res.status(200).json({ data });
+    }
+  } else if (req.method === "GET") {
     // Handle any other HTTP method
     // Get the supabase donations
     const result = await supabaseClient.from("team_seas").select();

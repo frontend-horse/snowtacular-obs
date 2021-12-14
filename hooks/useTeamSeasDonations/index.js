@@ -31,5 +31,6 @@ export const fetchTeamSeasDonations = async () => {
 export const useTeamSeasDonations = () => {
   return useQuery("teamSeasDonations", fetchTeamSeasDonations, {
     refetchInterval: 15000,
+    refetchIntervalInBackground: true,
   });
 };
