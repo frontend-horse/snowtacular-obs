@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Head from "next/head";
 import ProgressBar from "../components/ProgressBar";
+import Sponsors from "../components/Sponsors";
 
 import styles from "../styles/Home.module.css";
 
@@ -18,15 +19,17 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <ProgressBar></ProgressBar>
-        {data &&
+        <ProgressBar/>
+        <Sponsors/>
+        {/* Individial Donations
+		{data &&
           data.map((item, index) => (
             <div key={index}>
               <p>{item.display_name}</p>
               <p>{item.message_public}</p>
               <p>{item.donation}</p>
             </div>
-          ))}
+          ))} */}
       </main>
     </div>
   );
