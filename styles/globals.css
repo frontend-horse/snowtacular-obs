@@ -4,11 +4,12 @@
 
   /* Colors */
 
+  --blue-100: #e8f5fe;
   --yellow-300: #ffe7b9;
-
   --red-800: #5d1c1c;
 
   /* Assignments */
+  --background-color: var(--blue-100);
   --nametag-background: var(--yellow-300);
   --nametag-text: var(--red-800);
 }
@@ -35,4 +36,5 @@ a {
   height: 1080px;
   overflow: hidden;
   border: 1px solid gray;
+  background: var(--background-color);
 }
