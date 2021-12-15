@@ -1,11 +1,9 @@
 import React, { useMemo, useState } from "react";
-// import { useSupabaseDonations } from '../hooks/useSupabaseDonations';
-import { useTeamSeasDonations } from "../hooks/useTeamSeasDonations";
+import { useSupabaseDonations } from '../hooks/useSupabaseDonations';
 import styles from "../styles/ProgressBar.module.css";
 
 export default function ProgressBar({ className }) {
-  // const { status, data, error, isFetching } = useSupabaseDonations();
-  const { data } = useTeamSeasDonations();
+  const { status, data, error, isFetching } = useSupabaseDonations();
 
   // setup progressBar state
   const [progressBar, setProgressBar] = useState({
