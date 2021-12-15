@@ -3,9 +3,9 @@
 
 .progressBar {
   position: relative;
-  aspect-ratio: 7.11 / 1;
   border-radius: 0.5rem;
   overflow: hidden;
+  height: 120px;
 }
 
 .progressBar .oceanDirty {
