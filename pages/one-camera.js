@@ -11,8 +11,8 @@ export default function OneCamera() {
       <div className={styles.host} />
       <Logo height={154} width={260} className={styles.logo} />
       <Sponsors className={styles.sponsors} />
-      <ProgressBar className={styles.progressBar} />
       <LatestDonations className={styles.latestDonations} />
+      <ProgressBar className={styles.progressBar} />
     </div>
   );
 }

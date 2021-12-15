@@ -3,7 +3,7 @@
 import ProgressBar from "../components/ProgressBar";
 import Sponsors from "../components/Sponsors";
 import LatestDonations from "../components/LatestDonations";
-import styles from "../styles/TwoCamerasDesktop.module.css";
+import styles from "../styles/OneCameraDesktop.module.css";
 
 export default function OneCamerasDesktop() {
   return (
