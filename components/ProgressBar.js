@@ -78,7 +78,10 @@ export default function ProgressBar({ className }) {
           muted
           loop
         >
-          <source src="progress-bar/ocean_dirty.mp4" type="video/mp4" />
+          <source
+            src="https://res.cloudinary.com/frontendhorse/video/upload/v1639609817/ocean_dirty_uwijcv.mp4"
+            type="video/mp4"
+          />
         </video>
         <span className={styles.progressBarInner}>
           <video
@@ -88,7 +91,10 @@ export default function ProgressBar({ className }) {
             muted
             loop
           >
-            <source src="progress-bar/ocean_clean.mp4" type="video/mp4" />
+            <source
+              src="https://res.cloudinary.com/frontendhorse/video/upload/v1639609817/ocean_clean_fcjsss.mp4"
+              type="video/mp4"
+            />
           </video>
         </span>
         <div className={styles.donationStats}>
