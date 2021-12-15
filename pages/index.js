@@ -1,15 +1,21 @@
-import { useEffect, useState } from "react";
+import Link from "next/link";
 import Head from "next/head";
 import ProgressBar from "../components/ProgressBar";
 import Sponsors from "../components/Sponsors";
 
 import styles from "../styles/Home.module.css";
 
-import { useSupabaseDonations } from "../hooks/useSupabaseDonations";
-
 export default function Home() {
-  const { status, data, error, isFetching } = useSupabaseDonations();
-
+  const pages = [
+    "intermission-ad",
+    "nametag",
+    "one-camera-desktop",
+    "one-camera",
+    "starting-soon",
+    "teamseas-fetch",
+    "two-cameras-desktop",
+    "two-cameras",
+  ];
   return (
     <div className={styles.container}>
       <Head>
@@ -19,17 +25,11 @@ export default function Home() {
       </Head>
 
       <main className={styles.main}>
-        <ProgressBar />
-        <Sponsors />
-        {/* Individual Donations
-		{data &&
-          data.map((item, index) => (
-            <div key={index}>
-              <p>{item.display_name}</p>
-              <p>{item.message_public}</p>
-              <p>{item.donation}</p>
-            </div>
-          ))} */}
+        {pages.map((page) => (
+          <Link href={`/${page}`} key={page}>
+            <a>{page}</a>
+          </Link>
+        ))}
       </main>
     </div>
   );
