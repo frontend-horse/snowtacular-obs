@@ -1,0 +1,40 @@
+.container {
+  width: 100%;
+}
+
+.header {
+  font-family: Recoleta;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 101%;
+  text-align: center;
+  color: #1e6bb1;
+}
+
+.card {
+}
+
+.cardHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 0px;
+  margin-bottom: 10px;
+}
+.name {
+  font-weight: 600;
+  font-size: 19px;
+}
+.amount {
+  font-weight: 500;
+  font-size: 18px;
+}
+.message {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 139%;
+  color: #324c62;
+}

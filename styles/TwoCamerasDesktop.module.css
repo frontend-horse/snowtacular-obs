@@ -1,0 +1,50 @@
+.sponsors {
+  left: 880px;
+  top: 908px;
+  position: absolute;
+}
+
+.progressBar {
+  position: absolute;
+  width: 890px;
+  left: 10px;
+  top: 895px;
+}
+
+.latestDonations {
+  position: absolute;
+  width: 281px;
+  height: 349px;
+  left: 1610px;
+  top: 686px;
+}
+
+.desktop {
+  position: absolute;
+  width: 1580px;
+  height: 888px;
+  left: 0px;
+  top: 0px;
+  background: #eee;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+}
+
+.hostSquare {
+  position: absolute;
+  width: 320px;
+  height: 311px;
+  left: 1590px;
+  top: 0px;
+  background: #eee;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.guestSquare {
+  position: absolute;
+  width: 320px;
+  height: 311px;
+  left: 1590px;
+  top: 326px;
+  background: #eee;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
