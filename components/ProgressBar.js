@@ -1,65 +1,24 @@
-import React, { useMemo, useState } from "react";
-import { useSupabaseDonations } from "../hooks/useSupabaseDonations";
+import React, { useEffect } from "react";
+import useProgress from "../hooks/useProgress";
 import styles from "../styles/ProgressBar.module.css";
 
+/**
+ * Format a decimal as a percentage
+ * @param {number} percentAsDecimal - percentage, represented as a number between 0 and 1
+ * @returns {string} percent of goal which has been donated
+ */
+function formatPercentage(percentAsDecimal) {
+	const percentage = Math.floor(percentAsDecimal * 100);
+	return percentage + '%';
+};
+
 export default function ProgressBar({ className }) {
-  const { data } = useSupabaseDonations();
+  const {percent, total, goal} = useProgress();
+  const formattedPercent = formatPercentage(percent);
 
-  // setup progressBar state
-  const [progressBar, setProgressBar] = useState({
-    goal: 10000,
-    numOfSponsors: 3,
-    maxSponsorMatch: 1000,
-    perSponsorMatch: 0,
-    donations: 0,
-    matching: 0,
-    total: 0,
-    percentFilled: "0%",
-  });
-
-  // function to convert to percentage
-  const percentage = (current, goal) => {
-    if (current / goal > 1) return "100%";
-    return (current / goal) * 100 + "%";
-  };
-
-  // function to set the width of the inner progress bar
-  const setWidth = () =>
-    document.documentElement.style.setProperty(
-      "--bar-width",
-      progressBar.percentFilled
-    );
-
-  if (data) {
-    // find total amount of donations
-    progressBar.donations = data.reduce((acc, next) => acc + next.donation, 0);
-
-    // if the number of donations is less than the max amount that sponsors will be matching,
-    // set to the same amount as the donations.
-    // otherwise just set it to the maximum the sponsors will be matching
-    if (
-      progressBar.donations <
-      progressBar.numOfSponsors * progressBar.maxSponsorMatch
-    ) {
-      progressBar.matching = progressBar.donations;
-    } else {
-      progressBar.matching =
-        progressBar.numOfSponsors * progressBar.maxSponsorMatch;
-    }
-
-    // calculate the amount each sponsor will match
-    progressBar.perSponsorMatch =
-      progressBar.matching / progressBar.numOfSponsors;
-
-    // set the total to the sum of the donations and sponsor matching amounts
-    progressBar.total = progressBar.donations + progressBar.matching;
-
-    // create the percentage string
-    progressBar.percentFilled = percentage(progressBar.total, progressBar.goal);
-
-    // set the inner progress bar's width to the percent string
-    setWidth();
-  }
+  useEffect(() => {
+	document.documentElement.style.setProperty("--bar-width", formattedPercent);
+  }, [formattedPercent]);
 
   return (
     <div className={`${styles.container} ${className}`}>
@@ -95,8 +54,8 @@ export default function ProgressBar({ className }) {
         </span>
         <div className={styles.donationStats}>
           <p>
-            ${parseFloat(progressBar.total.toFixed(0)).toLocaleString("en-US")}{" "}
-            / ${progressBar.goal.toLocaleString("en-US")}
+            ${parseFloat(total.toFixed(0)).toLocaleString("en-US")}{" "}
+            / ${goal.toLocaleString("en-US")}
           </p>
         </div>
       </div>
