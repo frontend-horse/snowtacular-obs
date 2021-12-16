@@ -1,56 +1,56 @@
-import React, { useMemo, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { useSupabaseDonations } from "../hooks/useSupabaseDonations";
 import styles from "../styles/LatestDonations.module.css";
 
 export default function LatestDonations({ className }) {
   const { data } = useSupabaseDonations();
 
-  const [latestDonations, setLatestDonations] = useState([]);
+  const [fakeData, setFakeData] = useState([]);
 
-  if (data) {
-    // Manually adding more donations in for testing...
-    // donationsWithMessage.push({
-    //   display_name: 'Ryan Trimble',
-    //   team_name: 'Frontend Horse',
-    //   message_public: 'This is a test message!',
-    //   donation: 5,
-    // });
-    // donationsWithMessage.push({
-    //   display_name: 'Leif will find a way',
-    //   team_name: 'Frontend Horse',
-    //   message_public: 'This is a test message!',
-    //   donation: 5,
-    // });
+  const addDonation = () => {
+    // Add a donation to the list
+    setFakeData([
+      ...fakeData,
+      {
+        display_name: "Leif will find a way",
+        team_name: "Frontend Horse",
+        message_public: "This is a test message!",
+        donation: 5,
+        created_at: Date.now(),
+      },
+    ]);
+  };
 
-    // setInterval(() => {
-    //   donationsWithMessage.push({
-    //     display_name: 'Too many Bens',
-    //     team_name: 'Frontend Horse',
-    //     message_public: 'This is a test message!',
-    //     donation: 5,
-    //   });
-    // }, 1000);
-
-    // Map the donations with messages to cards
-    latestDonations = data.reverse().map((message, key) => {
-      return (
-        <div key={key} className={styles.card}>
-          <div className={styles.cardHeader}>
-            <div className={styles.name}>{message.display_name}</div>
-            <div className={styles.amount}>
-              ${parseFloat(message.donation.toFixed(2)).toLocaleString("en-US")}
-            </div>
-          </div>
-          <div className={styles.message}>{message.message_public}</div>
-        </div>
-      );
-    });
-  }
+  let displayList = useMemo(() => {
+    return data?.length ? [...data, ...fakeData] : fakeData;
+  }, [data, fakeData]);
 
   return (
     <div className={`${styles.container} ${className}`}>
+      <button onClick={addDonation}>Add Donation</button>
       <p className={styles.header}>Latest Donations</p>
-      <div className={styles.cardContainer}>{latestDonations}</div>
+      <div className={styles.cardContainer}>
+        {displayList?.sort(compareNumbers).map((message, index) => {
+          return (
+            <div key={index} className={styles.card}>
+              <div className={styles.cardHeader}>
+                <div className={styles.name}>{message.display_name}</div>
+                <div className={styles.amount}>
+                  $
+                  {parseFloat(message.donation.toFixed(2)).toLocaleString(
+                    "en-US"
+                  )}
+                </div>
+              </div>
+              <div className={styles.message}>{message.message_public}</div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
+}
+
+function compareNumbers(a, b) {
+  return b.created_at - a.created_at;
 }
