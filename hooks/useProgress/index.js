@@ -2,7 +2,8 @@ import { useSupabaseDonations } from "../useSupabaseDonations";
 
 const GOAL = 10_000;
 const NUM_SPONSORS = 3;
-const MAX_SPONSOR_MATCH = 1_000;
+const SPONSOR_MATCH = 1_000;
+const TOTAL_SPONSOR_MATCH = NUM_SPONSORS * SPONSOR_MATCH;
 
 /**
  * Calculates the amount donated and matched so far, and determines the percentage towards the goal.
@@ -28,12 +29,8 @@ function useProgress() {
 		return totalDonated + viewerDonation.donation;
 	}, 0);
 
-	const numSponsorMatches = Math.min(
-		Math.floor(amountDonatedByViewers / MAX_SPONSOR_MATCH), // how many times the sponsor match amount has been reached…
-		NUM_SPONSORS // …clamped to the number of actual sponsors
-	);
-
-	const amountMatchedBySponsors = numSponsorMatches * MAX_SPONSOR_MATCH;
+	
+	const amountMatchedBySponsors = Math.max(amountDonatedByViewers, TOTAL_SPONSOR_MATCH);
 	const totalAmountDonated = amountDonatedByViewers + amountMatchedBySponsors;
 
 	const percentOfGoal = totalAmountDonated / GOAL;
