@@ -13,10 +13,11 @@
 
 .latestDonations {
   position: absolute;
-  width: 281px;
-  height: 349px;
-  left: 1610px;
-  top: 686px;
+  width: 340px;
+  height: 550px;
+  left: 1580px;
+  top: 340px;
+  border: 1px solid red;
 }
 
 .desktop {

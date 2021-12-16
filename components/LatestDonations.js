@@ -27,7 +27,7 @@ export default function LatestDonations({ className }) {
 
   return (
     <div className={`${styles.container} ${className}`}>
-      <button onClick={addDonation}>Add Donation</button>
+      {/* <button onClick={addDonation}>Add Donation</button> */}
       <p className={styles.header}>Latest Donations</p>
       <div className={styles.cardContainer}>
         {displayList?.sort(compareNumbers).map((message, index) => {
