@@ -5,6 +5,7 @@ const NUM_SPONSORS = 3;
 const MAX_SPONSOR_MATCH = 1_000;
 
 /**
+ * Calculates the amount donated and matched so far, and determines the percentage towards the goal.
  * @returns {{
  *   goal: number,
  *   percent: number,
