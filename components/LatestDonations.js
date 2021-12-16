@@ -1,6 +1,6 @@
-import React, { useMemo, useState } from 'react';
-import { useSupabaseDonations } from '../hooks/useSupabaseDonations';
-import styles from '../styles/LatestDonations.module.css';
+import React, { useMemo, useState } from "react";
+import { useSupabaseDonations } from "../hooks/useSupabaseDonations";
+import styles from "../styles/LatestDonations.module.css";
 
 export default function LatestDonations({ className }) {
   const { data } = useSupabaseDonations();
@@ -8,22 +8,19 @@ export default function LatestDonations({ className }) {
   const [latestDonations, setLatestDonations] = useState([]);
 
   if (data) {
-    // Find only donations with messages
-    const donationsWithMessage = data.filter((x) => x.message_public.length > 0);
-
     // Manually adding more donations in for testing...
-    donationsWithMessage.push({
-      display_name: 'Ryan Trimble',
-      team_name: 'Frontend Horse',
-      message_public: 'This is a test message!',
-      donation: 5,
-    });
-    donationsWithMessage.push({
-      display_name: 'Leif will find a way',
-      team_name: 'Frontend Horse',
-      message_public: 'This is a test message!',
-      donation: 5,
-    });
+    // donationsWithMessage.push({
+    //   display_name: 'Ryan Trimble',
+    //   team_name: 'Frontend Horse',
+    //   message_public: 'This is a test message!',
+    //   donation: 5,
+    // });
+    // donationsWithMessage.push({
+    //   display_name: 'Leif will find a way',
+    //   team_name: 'Frontend Horse',
+    //   message_public: 'This is a test message!',
+    //   donation: 5,
+    // });
 
     // setInterval(() => {
     //   donationsWithMessage.push({
@@ -35,12 +32,14 @@ export default function LatestDonations({ className }) {
     // }, 1000);
 
     // Map the donations with messages to cards
-    latestDonations = donationsWithMessage.reverse().map((message, key) => {
+    latestDonations = data.reverse().map((message, key) => {
       return (
         <div key={key} className={styles.card}>
           <div className={styles.cardHeader}>
             <div className={styles.name}>{message.display_name}</div>
-            <div className={styles.amount}>${parseFloat(message.donation.toFixed(2)).toLocaleString('en-US')}</div>
+            <div className={styles.amount}>
+              ${parseFloat(message.donation.toFixed(2)).toLocaleString("en-US")}
+            </div>
           </div>
           <div className={styles.message}>{message.message_public}</div>
         </div>
