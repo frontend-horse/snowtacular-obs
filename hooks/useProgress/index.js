@@ -30,7 +30,7 @@ function useProgress() {
 	}, 0);
 
 	
-	const amountMatchedBySponsors = Math.max(amountDonatedByViewers, TOTAL_SPONSOR_MATCH);
+	const amountMatchedBySponsors = Math.min(amountDonatedByViewers, TOTAL_SPONSOR_MATCH);
 	const totalAmountDonated = amountDonatedByViewers + amountMatchedBySponsors;
 
 	const percentOfGoal = totalAmountDonated / GOAL;
