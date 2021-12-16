@@ -1,9 +1,9 @@
 import React, { useMemo, useState } from "react";
-import { useSupabaseDonations } from '../hooks/useSupabaseDonations';
+import { useSupabaseDonations } from "../hooks/useSupabaseDonations";
 import styles from "../styles/ProgressBar.module.css";
 
 export default function ProgressBar({ className }) {
-  const { status, data, error, isFetching } = useSupabaseDonations();
+  const { data } = useSupabaseDonations();
 
   // setup progressBar state
   const [progressBar, setProgressBar] = useState({
@@ -33,8 +33,6 @@ export default function ProgressBar({ className }) {
   if (data) {
     // find total amount of donations
     progressBar.donations = data.reduce((acc, next) => acc + next.donation, 0);
-
-    progressBar.donations = 2500;
 
     // if the number of donations is less than the max amount that sponsors will be matching,
     // set to the same amount as the donations.
