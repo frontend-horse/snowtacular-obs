@@ -1,9 +1,9 @@
 // Scene for only full-screen host
-import styles from "../styles/OneCamera.module.css";
 import Logo from "../components/Logo";
 import LatestDonations from "../components/LatestDonations";
 import ProgressBar from "../components/ProgressBar";
 import Sponsors from "../components/Sponsors";
+import styles from "../styles/OneCamera.module.css";
 
 export default function OneCamera() {
   return (
