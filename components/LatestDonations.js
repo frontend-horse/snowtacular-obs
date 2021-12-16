@@ -4,6 +4,7 @@ import styles from "../styles/LatestDonations.module.css";
 
 export default function LatestDonations({ className }) {
   const { data } = useSupabaseDonations();
+  console.log({data});
 
   const [latestDonations, setLatestDonations] = useState([]);
 
