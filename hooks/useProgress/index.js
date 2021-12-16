@@ -1,7 +1,7 @@
 import { useSupabaseDonations } from "../useSupabaseDonations";
 
 const GOAL = 10_000;
-const NUM_SPONSORS = 3;
+const NUM_SPONSORS = 5;
 const SPONSOR_MATCH = 1_000;
 const TOTAL_SPONSOR_MATCH = NUM_SPONSORS * SPONSOR_MATCH;
 
@@ -14,32 +14,34 @@ const TOTAL_SPONSOR_MATCH = NUM_SPONSORS * SPONSOR_MATCH;
  * }}
  */
 function useProgress() {
-	/** @type {{data: TeamSeasDonation[]}} */
-	const { data } = useSupabaseDonations();
+  /** @type {{data: TeamSeasDonation[]}} */
+  const { data } = useSupabaseDonations();
 
-	if (!data?.length) {
-		return {
-			goal: GOAL,
-			percent: 0,
-			total: 0
-		};
-	}
+  if (!data?.length) {
+    return {
+      goal: GOAL,
+      percent: 0,
+      total: 0,
+    };
+  }
 
-	const amountDonatedByViewers = data.reduce((totalDonated, viewerDonation) => {
-		return totalDonated + viewerDonation.donation;
-	}, 0);
+  const amountDonatedByViewers = data.reduce((totalDonated, viewerDonation) => {
+    return totalDonated + viewerDonation.donation;
+  }, 0);
 
-	
-	const amountMatchedBySponsors = Math.min(amountDonatedByViewers, TOTAL_SPONSOR_MATCH);
-	const totalAmountDonated = amountDonatedByViewers + amountMatchedBySponsors;
+  const amountMatchedBySponsors = Math.min(
+    amountDonatedByViewers,
+    TOTAL_SPONSOR_MATCH
+  );
+  const totalAmountDonated = amountDonatedByViewers + amountMatchedBySponsors;
 
-	const percentOfGoal = totalAmountDonated / GOAL;
+  const percentOfGoal = totalAmountDonated / GOAL;
 
-	return {
-		percent: Math.min(percentOfGoal, 1),
-		total: totalAmountDonated,
-		goal: GOAL
-	};
+  return {
+    percent: Math.min(percentOfGoal, 1),
+    total: totalAmountDonated,
+    goal: GOAL,
+  };
 }
 
 export default useProgress;
