@@ -26,7 +26,7 @@ function useProgress() {
 
 	const amountDonatedByViewers = data.reduce((totalDonated, viewerDonation) => {
 		return totalDonated + viewerDonation.donation;
-	}, 0) + 5200;
+	}, 0);
 
 	const numSponsorMatches = Math.min(
 		Math.floor(amountDonatedByViewers / MAX_SPONSOR_MATCH), // how many times the sponsor match amount has been reached…
