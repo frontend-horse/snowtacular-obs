@@ -20,6 +20,7 @@
   height: 100%;
   width: var(--bar-width);
   max-width: 100%;
+  transition: width 1s cubic-bezier(.27, 1.01, .78, 1.06);
 }
 
 .progressBarInner .oceanClean {
