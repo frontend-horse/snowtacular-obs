@@ -35,26 +35,6 @@ export default function LatestDonations({ className }) {
 
 		return () => clearInterval(throttle);
 	}, [queue]);
-	//   const [queue, setQueue] = useState([]);
-	//   const [displayList, setDisplayList] = useState([]);
-
-	//   useEffect(() => {
-	//       [...data, ...fakeData].forEach((donation) => {
-	//         const loggedDonations = [...queue, ...displayList];
-	//         const donationExists = loggedDonations.find(
-	//           (loggedDonation) => loggedDonation.id === donation.id
-	//         );
-
-	//         if (!donationExists) {
-	//           setQueue([donation, ...queue]);
-	//           setTimeout(() => {
-	//             setDisplayList([...displayList, donation]);
-	//             console.count("Donation added");
-	//             setQueue(queue.filter((donation) => donation.id !== donation.id));
-	//           }, 1000);
-	//         }
-	//       });
-	//   }, [data, displayList, queue, fakeData]);
 
 	const addDonation = () => {
 		// Add a donation to the list
@@ -70,10 +50,6 @@ export default function LatestDonations({ className }) {
 			},
 		]);
 	};
-
-	// let displayList = useMemo(() => {
-	//   return data?.length ? [...data, ...fakeData] : fakeData;
-	// }, [data, fakeData]);
 
 	return (
 		<div className={`${styles.container} ${className}`}>
