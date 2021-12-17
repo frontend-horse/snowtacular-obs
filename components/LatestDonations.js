@@ -1,8 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useSupabaseDonations } from "../hooks/useSupabaseDonations";
 import styles from "../styles/LatestDonations.module.css";
 
 import DonationCard from "./DonationCard";
+
+let DEBUG = false;
 
 export default function LatestDonations({ className }) {
 	/** @type {{data: TeamSeasDonation[]}} */
@@ -16,7 +18,8 @@ export default function LatestDonations({ className }) {
 
 	const [fakeData, setFakeData] = useState([]);
 
-	let DATA = [...data, ...fakeData]
+	const sortedSupabaseTransactions = [...data].sort(compareNumbers);
+	let DATA = [...sortedSupabaseTransactions, ...fakeData].reverse();
 	const queue = DATA.filter(donation => !shownDonationIds[donation.id]);
 	const displayList = DATA
 		.slice(-20)
@@ -74,8 +77,12 @@ export default function LatestDonations({ className }) {
 
 	return (
 		<div className={`${styles.container} ${className}`}>
-			{!!queue.length && <div>{queue[0].display_name}</div>}
-			<button onClick={addDonation}>Add Donation</button>
+			{DEBUG && (
+				<>
+					{!!queue.length && <div>{queue[0].display_name}</div>}
+					<button onClick={addDonation}>Add Donation</button>
+				</>
+			)}
 			<p className={styles.header}>Latest Donations</p>
 			<div className={styles.listContainer}>
 				{displayList?.sort(compareNumbers).map((item) => {
