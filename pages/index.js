@@ -13,6 +13,7 @@ export default function Home() {
     "one-camera",
     "starting-soon",
     "teamseas-fetch",
+	"timer",
     "two-cameras-desktop",
     "two-cameras",
   ];
