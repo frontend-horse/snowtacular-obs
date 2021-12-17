@@ -1,5 +1,3 @@
-import React from "react";
-
 export default function Intermission() {
-  return <div>Intermission</div>;
+  return <div className="scene">Intermission</div>;
 }
