@@ -1,5 +1,6 @@
 // Scene for the Intermission ad videos with logo and question
 import React from "react";
+import Snow from "../components/Snow"
 import styles from "../styles/Intermission.module.css"
 
 const sponsors = ["prismic", "netlify", "cloudinary", "stepzen", "orbit"];
@@ -13,6 +14,7 @@ if (typeof window !== "undefined") {
 
 export default function IntermissionAd() {
 	return (<div className={styles.container}>
+		<Snow className={styles.snow}/>
 		<div className={styles.columns}>
 			<div className={styles.column1}>
 				<h1>Intermission!</h1>
