@@ -8,7 +8,7 @@
 }
 
 .inner {
-  padding: 1.5rem 2rem;
+  padding: 1.25rem 1.75rem;
   background: var(--nametag-background);
   color: var(--nametag-text);
   display: inline-flex;
