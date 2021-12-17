@@ -1,6 +1,6 @@
 import styles from "../styles/Sponsors.module.css";
 
-const sponsors = ["prismic", "cloudinary", "netlify"];
+const sponsors = ["prismic", "netlify", "cloudinary", "stepzen", "orbit"];
 
 export default function Sponsors({ className }) {
   if (typeof window !== "undefined") {
