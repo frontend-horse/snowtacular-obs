@@ -7,6 +7,7 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
   const pages = [
+	"countdown",
     "intermission-ad",
     "nametag",
     "one-camera-desktop",
