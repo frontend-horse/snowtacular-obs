@@ -1,5 +1,3 @@
-
-
 .progressBar {
   position: relative;
   border-radius: 0.5rem;
@@ -11,8 +9,25 @@
   position: absolute;
   height: 100%;
   width: 100%;
-  object-fit:cover;
+  object-fit: cover;
   object-position: center;
+  /* opacity: 0.5; */
+}
+
+.progressBarInner:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  mix-blend-mode: overlay;
+  background: linear-gradient(
+    to right,
+    rgba(100, 255, 255, 0.753),
+    rgba(40, 248, 255, 0.541)
+  );
 }
 
 .progressBarInner {
@@ -20,7 +35,7 @@
   height: 100%;
   width: var(--bar-width);
   max-width: 100%;
-  transition: width 1s cubic-bezier(.27, 1.01, .78, 1.06);
+  transition: width 1s cubic-bezier(0.27, 1.01, 0.78, 1.06);
 }
 
 .progressBarInner .oceanClean {
@@ -28,6 +43,7 @@
   width: 100%;
   object-fit: cover;
   object-position: left center;
+  position: relative;
 }
 
 .donationStats {
