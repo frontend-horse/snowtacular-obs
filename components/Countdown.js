@@ -35,7 +35,7 @@ export default function Timer({ time, styles }) {
 	const displayMinutes = Math.floor(secondsRemaining / 60);
 	const displaySeconds = secondsRemaining - (displayMinutes * 60);
 
-	const finalTime = `${formatAsTwoDigits(displayMinutes)}:${formatAsTwoDigits(displaySeconds)}`;
+	const finalTime = `${displayMinutes}:${formatAsTwoDigits(displaySeconds)}`;
 
 	return <div className={styles.timer}>{finalTime}</div>;
 }
