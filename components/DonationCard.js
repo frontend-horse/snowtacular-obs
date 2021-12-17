@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-export default function DonationCard({ key, styles, item }) {
+export default function DonationCard({ styles, item }) {
   function checkZIndex(latest) {
     // console.log("Latest", latest);
     // if (isSelected) {
