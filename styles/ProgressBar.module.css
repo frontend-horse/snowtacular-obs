@@ -14,7 +14,8 @@
   /* opacity: 0.5; */
 }
 
-.progressBarInner:after {
+.progressBarInner:after,
+.progressBarInner:before {
   content: "";
   position: absolute;
   top: 0;
@@ -25,8 +26,17 @@
   mix-blend-mode: overlay;
   background: linear-gradient(
     to right,
-    rgba(100, 255, 255, 0.753),
-    rgba(40, 248, 255, 0.541)
+    rgba(100, 255, 255, 0.4),
+    rgba(40, 248, 255, 0.3)
+  );
+}
+
+.progressBarInner:before {
+  mix-blend-mode: overlay;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.3),
+    rgba(255, 255, 255, 0.4)
   );
 }
 
