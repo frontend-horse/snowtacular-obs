@@ -16,6 +16,7 @@ export default function Home() {
 	"timer",
     "two-cameras-desktop",
     "two-cameras",
+    "intermission",
   ];
   return (
     <div className={styles.container}>

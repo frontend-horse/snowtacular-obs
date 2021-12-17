@@ -1,0 +1,54 @@
+.container {
+	position: relative;
+	width: 1920px;
+	height: 1080px;
+	background: linear-gradient(0deg, #9FB2E4 0%, #313E5E 58.33%, #0C1836 100%);
+}
+
+.content {
+	position: relative;
+	display: flex;
+	height: 100%;
+	padding: 2rem;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+}
+
+.content h2 {
+	margin: 0;
+}
+
+.question {
+	margin: 0;
+	font-family: 'Recoleta';
+	font-size: 4rem;
+	color: #CD4646;
+}
+
+.video{
+	background:#0C1836;
+	width: 1280px;
+	height: 720px;
+}
+
+.sponsorTag {
+	width: 30rem;
+	height: 5rem;
+	border-radius: 3rem;
+	background: #fff;
+}
+
+.flake {
+	position: absolute;
+	animation-name: rotate;
+}
+
+@keyframes rotate {
+	0%{
+		transform: rotate(0deg);
+	}
+	100%{
+		transform: rotate(360deg);
+	}
+}
