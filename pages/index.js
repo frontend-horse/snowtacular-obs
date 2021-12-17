@@ -7,13 +7,14 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
   const pages = [
+    "intermission",
     "intermission-ad",
     "nametag",
     "one-camera-desktop",
     "one-camera",
     "starting-soon",
     "teamseas-fetch",
-	"timer",
+    "timer",
     "two-cameras-desktop",
     "two-cameras",
     "intermission",
@@ -29,7 +30,7 @@ export default function Home() {
       <main className={styles.main}>
         {pages.map((page) => (
           <Link href={`/${page}`} key={page}>
-            <a>{page}</a>
+            <a style={{ marginBottom: "10px", fontSize: "20px" }}>{page}</a>
           </Link>
         ))}
       </main>
