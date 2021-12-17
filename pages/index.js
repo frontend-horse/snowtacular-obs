@@ -7,13 +7,13 @@ import styles from "../styles/Home.module.css";
 
 export default function Home() {
   const pages = [
-	"countdown",
     "intermission-ad",
     "nametag",
     "one-camera-desktop",
     "one-camera",
     "starting-soon",
     "teamseas-fetch",
+	"timer",
     "two-cameras-desktop",
     "two-cameras",
   ];
