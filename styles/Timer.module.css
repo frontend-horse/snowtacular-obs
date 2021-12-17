@@ -1,23 +1,23 @@
 .timer {
-	text-align: center;
+  text-align: center;
 }
 
 .timer p {
-	margin: 0;
+  margin: 0;
 }
 
 .startingSoon {
-	color: #A5D5EC;
-	font-family: 'Recoleta Alt', display;
-	font-size: 52px;
-	font-weight: 400;
+  color: #0e4970;
+  font-family: "Recoleta Alt", display;
+  font-size: 52px;
+  font-weight: 500;
 }
 
 .timeDisplay {
-	color: #CD4646;
-	font-family: 'Roboto Mono', 'Recoleta Alt', display;
-	font-size: 150px;
-	font-weight: 700;
-	font-variant-numeric: tabular-nums;
-	margin-top: -0.25em !important;
+  color: #cd4646;
+  font-family: "Roboto Mono", "Recoleta Alt", display;
+  font-size: 150px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  margin-top: -0.25em !important;
 }
