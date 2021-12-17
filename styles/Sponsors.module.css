@@ -1,6 +1,6 @@
 .container {
   --image-width: 290px;
-  --single-frame-duration: 15s;
+  --single-frame-duration: 5s;
 
   height: 165px;
   overflow: hidden;
@@ -29,6 +29,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+
   animation: translateContainer
       calc(var(--num-sponsors) * var(--single-frame-duration))
       steps(var(--num-sponsors)) infinite,
@@ -38,6 +39,7 @@
 
 .images img {
   width: var(--image-width);
+  max-height: 100px;
 }
 
 @keyframes sponsorFade {

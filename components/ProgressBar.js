@@ -8,16 +8,16 @@ import styles from "../styles/ProgressBar.module.css";
  * @returns {string} percent of goal which has been donated
  */
 function formatPercentage(percentAsDecimal) {
-	const percentage = Math.floor(percentAsDecimal * 100);
-	return percentage + '%';
-};
+  const percentage = Math.floor(percentAsDecimal * 100);
+  return percentage + "%";
+}
 
 export default function ProgressBar({ className }) {
-  const {percent, total, goal} = useProgress();
+  const { percent, total, goal } = useProgress();
   const formattedPercent = formatPercentage(percent);
 
   useEffect(() => {
-	document.documentElement.style.setProperty("--bar-width", formattedPercent);
+    document.documentElement.style.setProperty("--bar-width", formattedPercent);
   }, [formattedPercent]);
 
   return (
@@ -54,8 +54,8 @@ export default function ProgressBar({ className }) {
         </span>
         <div className={styles.donationStats}>
           <p>
-            ${parseFloat(total.toFixed(0)).toLocaleString("en-US")}{" "}
-            / ${goal.toLocaleString("en-US")}
+            ${parseFloat(total.toFixed(0)).toLocaleString("en-US")} / $
+            {goal.toLocaleString("en-US")}
           </p>
         </div>
       </div>
